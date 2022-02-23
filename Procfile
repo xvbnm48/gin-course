@@ -1,1 +1,1 @@
-web: bin\gin-course
+web: bin/golang-gin
