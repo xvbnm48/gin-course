@@ -25,13 +25,30 @@ func main() {
 	setupLogOutput()
 	server := gin.New()
 
-	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
+	server.Static("/css", "./templates/css")
+	server.LoadHTMLGlob("templates/*.html")
 
-	server.GET("/posts", func(c *gin.Context) {
-		c.JSON(200, videoController.FindAll())
-	})
-	server.POST("/posts", func(c *gin.Context) {
-		c.JSON(200, videoController.Save(c))
-	})
+	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
+	apiRoutes := server.Group("/api")
+	{
+		apiRoutes.GET("/posts", func(c *gin.Context) {
+			c.JSON(200, videoController.FindAll())
+		})
+		apiRoutes.POST("/posts", func(c *gin.Context) {
+			err := videoController.Save(c)
+			if err != nil {
+				c.JSON(400, gin.H{"error": err.Error()})
+			} else {
+				c.JSON(200, gin.H{"message": "video input is valid"})
+			}
+
+		})
+	}
+
+	viewRoutes := server.Group("/view")
+	{
+		viewRoutes.GET("/videos", videoController.ShowAll)
+	}
+
 	server.Run(":8080")
 }

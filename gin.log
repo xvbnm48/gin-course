@@ -2,10 +2,29 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /posts                    --> main.main.func1 (4 handlers)
-[GIN-debug] POST   /posts                    --> main.main.func2 (4 handlers)
+[GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
+[GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
+[GIN-debug] Loaded HTML Templates (4): 
+	- 
+	- footer.html
+	- header.html
+	- index.html
+
+[GIN-debug] GET    /api/posts                --> main.main.func1 (4 handlers)
+[GIN-debug] POST   /api/posts                --> main.main.func2 (4 handlers)
+[GIN-debug] GET    /view/videos              --> github.com/xvbnm48/gin-course/controller.VideoController.ShowAll-fm (4 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8080
-127.0.0.1 - [20 Feb 22 23:43 WIB] GET /posts 401, 9.365µs 
-127.0.0.1 - [20 Feb 22 23:43 WIB] GET /posts 200, 221.709µs 
+::1 - [23 Feb 22 16:43 +07] GET /view/videos 401, 817.7µs 
+::1 - [23 Feb 22 16:45 +07] GET /view/videos 200, 4.2702ms 
+::1 - [23 Feb 22 16:45 +07] GET /favicon.ico 401, 0s 
+::1 - [23 Feb 22 16:45 +07] GET /favicon.ico 404, 0s 
+127.0.0.1 - [23 Feb 22 16:45 +07] POST /api/posts 200, 1.1816ms 
+::1 - [23 Feb 22 16:45 +07] GET /view/videos 200, 3.0873ms 
+127.0.0.1 - [23 Feb 22 16:46 +07] POST /api/posts 200, 1.6652ms 
+::1 - [23 Feb 22 16:46 +07] GET /view/videos 200, 29.668ms 
+::1 - [23 Feb 22 16:46 +07] GET /view/videos 200, 996.2µs 
+127.0.0.1 - [23 Feb 22 16:47 +07] POST /api/posts 200, 0s 
+::1 - [23 Feb 22 16:47 +07] GET /view/videos 200, 1.1981ms 
+::1 - [23 Feb 22 16:47 +07] GET /view/videos 200, 1.0003ms 
