@@ -2,7 +2,7 @@
 golang gin course
 
 
-Lets go to learning Gin 
+Lets go to learning Gin !
 
 
 # how to use ? 
