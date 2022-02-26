@@ -5,26 +5,15 @@
 [GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
 [GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
 [GIN-debug] Loaded HTML Templates (4): 
-	- header.html
-	- index.html
 	- 
 	- footer.html
+	- header.html
+	- index.html
 
-[GIN-debug] GET    /api/posts                --> main.main.func1 (4 handlers)
-[GIN-debug] POST   /api/posts                --> main.main.func2 (4 handlers)
-[GIN-debug] GET    /view/videos              --> github.com/xvbnm48/gin-course/controller.VideoController.ShowAll-fm (4 handlers)
+[GIN-debug] POST   /login                    --> main.main.func1 (1 handlers)
+[GIN-debug] GET    /api/posts                --> main.main.func2 (2 handlers)
+[GIN-debug] POST   /api/posts                --> main.main.func3 (2 handlers)
+[GIN-debug] GET    /view/videos              --> github.com/xvbnm48/gin-course/controller.VideoController.ShowAll-fm (1 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :8080
-::1 - [23 Feb 22 22:27 WIB] GET /api/videos 401, 12.096µs 
-::1 - [23 Feb 22 22:28 WIB] GET /api/videos 404, 3.025µs 
-::1 - [23 Feb 22 22:28 WIB] GET /api/videos 404, 5.498µs 
-::1 - [23 Feb 22 22:28 WIB] GET /api/posts 200, 86.783µs 
-127.0.0.1 - [23 Feb 22 22:29 WIB] GET /view/videos 401, 108.119µs 
-127.0.0.1 - [23 Feb 22 22:29 WIB] GET /view/videos 200, 2.998514ms 
-127.0.0.1 - [23 Feb 22 22:29 WIB] GET /favicon.ico 401, 9.953µs 
-127.0.0.1 - [23 Feb 22 22:29 WIB] GET /favicon.ico 404, 4.804µs 
-::1 - [23 Feb 22 22:31 WIB] POST /api/posts 401, 28.138µs 
-::1 - [23 Feb 22 22:31 WIB] POST /api/posts 200, 145.779µs 
-127.0.0.1 - [23 Feb 22 22:31 WIB] GET /view/videos 200, 3.701858ms 
-127.0.0.1 - [23 Feb 22 22:31 WIB] GET /favicon.ico 404, 4.354µs 
