@@ -2,12 +2,13 @@
 golang gin course
 
 
-Lets go to learning Gin !
+Lets go to learning Gin !`
 
 
 # how to use ? 
 
-1. access to https://gin-videoss.herokuapp.com/view/videos , password auth is sakura_endo and username is sakura_endo
+[//]: # (1. access to https://gin-videoss.herokuapp.com/view/videos , password auth is sakura_endo and username is sakura_endo)
+1. access to https://gin-videoss.herokuapp.com/view/videos , 
 2. if videos is not show, it means the video hasn't been uploaded yet
 3. can upload with use postman and use this route http://gin-videos.herokuapp.com/api/posts
 4. fill out a form like this 
@@ -24,5 +25,7 @@ Lets go to learning Gin !
     }
 }
  ```
-5. and click send at postman
-6. if success create new videos, check on https://gin-videoss.herokuapp.com/view/videos , then the uploaded video will appear
+5. link video video links are obtained from embed YouTube
+![](/templates/images/1.png?raw=true "Optional Title")
+6. and click send at postman
+7. if success create new videos, check on https://gin-videoss.herokuapp.com/view/videos , then the uploaded video will appear

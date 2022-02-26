@@ -1,18 +1,23 @@
 package main
 
 import (
+	"github.com/xvbnm48/gin-course/middlewares"
 	"io"
+	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/xvbnm48/gin-course/controller"
-	middlewares "github.com/xvbnm48/gin-course/middlewares"
 	"github.com/xvbnm48/gin-course/service"
 )
 
 var (
-	videoService    service.VideoService       = service.New()
+	videoService service.VideoService = service.New()
+	loginService service.LoginService = service.NewLoginService()
+	jwtService   service.JWTService   = service.NewJWTService()
+
 	videoController controller.VideoController = controller.New(videoService)
+	loginController controller.LoginController = controller.NewLoginService(loginService, jwtService)
 )
 
 func setupLogOutput() {
@@ -28,8 +33,20 @@ func main() {
 	server.Static("/css", "./templates/css")
 	server.LoadHTMLGlob("templates/*.html")
 
-	server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
-	apiRoutes := server.Group("/api")
+	//server.Use(gin.Recovery(), middlewares.Logger(), middlewares.BasicAuth())
+	server.Use(gin.Recovery(), middlewares.Logger())
+	//login end point with auth + token
+	server.POST("/login", func(ctx *gin.Context) {
+		token := loginController.Login(ctx)
+		if token != "" {
+			ctx.JSON(http.StatusOK, gin.H{"token": token})
+		} else {
+			ctx.JSON(http.StatusUnauthorized, nil)
+		}
+	})
+
+	// jwt auth only route to "api" only
+	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
 	{
 		apiRoutes.GET("/posts", func(c *gin.Context) {
 			c.JSON(200, videoController.FindAll())
@@ -45,6 +62,7 @@ func main() {
 		})
 	}
 
+	// this route is public non use auth
 	viewRoutes := server.Group("/view")
 	{
 		viewRoutes.GET("/videos", videoController.ShowAll)
@@ -52,7 +70,9 @@ func main() {
 
 	// server.Run(":8080")
 	port := os.Getenv("PORT")
-
+	if port == "" {
+		port = "8080"
+	}
 	server.Run(":" + port)
 
 }
