@@ -8,10 +8,11 @@ Lets go to learning Gin !`
 # how to use ? 
 
 [//]: # (1. access to https://gin-videoss.herokuapp.com/view/videos , password auth is sakura_endo and username is sakura_endo)
-1. access to https://gin-videoss.herokuapp.com/view/videos , 
-2. if videos is not show, it means the video hasn't been uploaded yet
-3. can upload with use postman and use this route http://gin-videos.herokuapp.com/api/posts
-4. fill out a form like this 
+1. login with username and password in route https://gin-videoss.herokuapp.com/login , username sakura_endo and password: sakura_endo with postman for get token
+2. access to https://gin-videoss.herokuapp.com/view/videos 
+3. if videos is not show, it means the video hasn't been uploaded yet
+4. can upload with use postman and use this route http://gin-videos.herokuapp.com/api/posts , but use Bearer token for authorization in postman > authorization > bearer token , token that is got from the previous login
+5. after filling authentication with Bearer (token) then fill json body like this 
  ```json
   {
     "title" : "how to become master golang",
